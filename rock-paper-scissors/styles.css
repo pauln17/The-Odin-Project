@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,300;1,600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Title of game */
+.header h1{
+    color: white;
+    margin: 50px;
+    font-size: 64px;
+    text-align: center;
+}
+
+/* Container used to display the game container in the center of the page */
+.container {
+    color: white;
+    height: 25%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 auto 0;
+    font-size: 16px;
+}
+
+/* Game container used to display and manage the game's contents */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Styling of the player's buttons */
+button {
+    background: transparent;
+    color: white;
+    font-size: 18px;
+    font-weight: 750;
+    padding: 25px;
+    width: 125px;
+    height: 100px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: all ease-in;
+}
+
+button img {
+    display: flex;
+    width: 100%;
+}
+
+button:hover {
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Container used for managing the display of the player's buttons  */
+.playerBtns {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin: 10px;
+    transition: all 1s ease-in;
+}
+
+/* An animation to tell users to indicate that a user has clicked a button */
+.clicked {
+    background-color: rgb(221, 206, 0);
+}
+
+/* Added responsiveness */
+@media (max-width: 510px) {
+    .body {
+        height: 150vh;
+    }
+    .header h1{
+        font-size: 42px;
+    }
+    .playerBtns {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .game-container {
+        margin-top: 250px;
+    }
+
+    .game-container h1 {
+        font-size: 28px;
+    }
+
+    .containerTwo {
+        margin: 250px auto 50px;
+    }
+}
+
+/* Container to help display results */
+.contentDisplay {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0px;
+    color: white;
+}
+
+.display h2 {
+    text-align: center;
+    opacity: 0;
+    font-size: 32px;
+    transition: all 0.3s ease-in;
+}
+
+#displayShowing {
+    opacity: 1;
+}
+
+/* Container to display results and scores */
+.containerTwo {
+    /* background: white; */
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+}
+
+/* Score box */
+.containerTwo span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 750;
+    width: 75px;
+    height: 75px;
+    border: 1px solid white;
+}
+
+/* Result icons and score box alignment */
+.Player, .Computer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 300px;
+}
+
+.PlayerScore, .ComputerScore {
+    transition: all 0.3s ease-in;
+}
+
+/* Reset game container */
+.resetGame {
+    margin: 25px;
+    height: 50px;
+}
+
+/* Reset button */
+.resetBtn {
+    font-size: 15px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 25px;
+}
+
+/* Rock, paper and scissors images for both player and computer */
+.rock, .paper, .scissors, .rockCPU, .paperCPU, .scissorsCPU {
+    opacity: 0;
+    width: 75px;
+    position: absolute;
+    top: 0;
+    transition: all 0.4s ease-in;
+}
+
+#show {
+    opacity: 1;
+}

@@ -93,26 +93,21 @@ function declareWinner() {
         count = 1;
         winnerResult.setAttribute('id', 'displayShowing');
         winnerResult.textContent = "PLAYER'S VICTORY";
-        setTimeout(function () {
-            winnerResult.textContent = "RESETTING...";
-        }, 2500);
+
         setTimeout(function () {
             winnerResult.removeAttribute('id');
             resetGame();
-        }, 4000);
-       
+        }, 1500);
     }
     else if (computerScore === 5) {
         count = 1;
         winnerResult.setAttribute('id', 'displayShowing');
         winnerResult.textContent = "COMPUTER'S VICTORY";
-        setTimeout(function () {
-            winnerResult.textContent = "RESETTING...";
-        }, 2500);
+  
         setTimeout(function () {
             winnerResult.removeAttribute('id');
             resetGame();
-        }, 4000);
+        }, 1500);
     }
 
     return;
@@ -146,7 +141,7 @@ gameButtons.forEach((button) => {
         let computerSelection = getComputerChoice();
         let results;
         results = playRound(playerSelection, computerSelection);
-        setTimeout(clearResults, 1000);
+        setTimeout(clearResults, 750);
         
         if (playerScore !== 5 && computerScore !== 5) {
             if (results == "WIN") {

@@ -110,13 +110,13 @@ button:hover {
     }
 }
 
-/* Container to help display results */
+/* Container to display winner */
 .contentDisplay {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 0px;
+    height: 50px;
     color: white;
 }
 

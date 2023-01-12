@@ -146,7 +146,7 @@ gameButtons.forEach((button) => {
         let computerSelection = getComputerChoice();
         let results;
         results = playRound(playerSelection, computerSelection);
-        setTimeout(clearResults, 1500);
+        setTimeout(clearResults, 1000);
         
         if (playerScore !== 5 && computerScore !== 5) {
             if (results == "WIN") {

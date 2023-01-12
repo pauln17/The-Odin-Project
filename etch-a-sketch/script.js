@@ -53,7 +53,9 @@ container.addEventListener('mousedown', () => {
 container.addEventListener('mouseup', () => {
     mouseDown = false;
 });
-
+document.addEventListener('mouseup', () => {
+    mouseDown = false;
+});
 
 // Drawing Pen Function
 let boxes = document.querySelectorAll('.box');
@@ -75,7 +77,20 @@ function draw() {
                     singleBox.setAttribute(`style`, `background-color:${colorChoice}`);
                 }
             }
+        });
 
+        singleBox.addEventListener('click', (event) => { 
+            if (options === 'rainbow') {
+                let randColor = randomColor(singleBox);
+                singleBox.setAttribute('style', `background: ${randColor};`);
+            }
+            else if (options === 'eraser') {
+                singleBox.setAttribute('style', 'background-color:white;');
+            }
+            else if (options === 'color') {
+                colorChoice = document.querySelector('.colorChoice').value;
+                singleBox.setAttribute(`style`, `background-color:${colorChoice}`);
+            }
         });
     });
 }

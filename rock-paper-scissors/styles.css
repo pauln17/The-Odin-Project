@@ -84,31 +84,6 @@ button:hover {
     background-color: rgb(221, 206, 0);
 }
 
-/* Added responsiveness */
-@media (max-width: 510px) {
-    .body {
-        height: 150vh;
-    }
-    .header h1{
-        font-size: 42px;
-    }
-    .playerBtns {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .game-container {
-        margin-top: 250px;
-    }
-
-    .game-container h1 {
-        font-size: 28px;
-    }
-
-    .containerTwo {
-        margin: 250px auto 50px;
-    }
-}
 
 /* Container to display winner */
 .contentDisplay {
@@ -197,4 +172,38 @@ button:hover {
 
 #show {
     opacity: 1;
+}
+
+/* Added responsiveness */
+@media (max-width: 510px) {
+
+    .header h1{
+        margin-top: 500px;
+        font-size: 42px;
+    }
+    .playerBtns {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .game-container {
+        margin-top: 250px;
+    }
+
+    .game-container h1 {
+        font-size: 28px;
+    }
+
+    .containerTwo {
+        margin: 250px auto 50px;
+    }
+
+    .contentDisplay {
+        translate: 0 225px;
+        margin-top: 150px;
+    }
+
+    .resetBtn {
+        translate: 0 -100px;
+    }
 }

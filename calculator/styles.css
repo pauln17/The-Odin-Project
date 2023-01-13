@@ -31,20 +31,20 @@ body {
 }
 
 .display p {
-    font-size: 12px;
+    font-size: 15px;
 }
 
-.display h1 {
+.display h4 {
     font-size: 32px;
+    font-weight: 100;
 }
 
 button {
     color: white;
-    font-size: 24px;
+    font-size: 28px;
     width: 65px;
     height: 65px;
     border-radius: 50%;
-    font-weight: 750;
 }
 
 .x-buttons button {

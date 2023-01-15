@@ -88,6 +88,7 @@ button[name="xButtonClickAnimations"] {
     gap: 5px;
 }
 .numbers {
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -101,6 +102,7 @@ button[name="xButtonClickAnimations"] {
     gap: 5px;
 }
 
+
 #currentOperatorMode {
     background: white;
     color: rgb(231, 155, 12);
@@ -109,4 +111,39 @@ button[name="xButtonClickAnimations"] {
 #equalButtonClickAnimations {
     background: white;
     color: black;
+}
+
+@media (max-width: 326px) {
+    .container {
+        width: 200px;
+        height: 350px;
+    }
+
+    button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .numbers button[name="zero"] {
+        height: 45px;
+        width: 95px;
+        border-radius: 35px;
+    }
+
+    .display p {
+        height: 15px;
+        display: block;
+        font-size: 15px;
+    }
+    
+    .display h4 {
+        height: 50px;
+        font-size: 36px;
+        font-weight: 100;
+    }
+
+    .x-buttons {
+        translate: -4.5px;
+    }
+    
 }

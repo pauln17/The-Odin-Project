@@ -80,7 +80,14 @@ let runOnce = false;
 numberButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const value = btn.getAttribute('value');
-        
+        // Clear if calculator display showed undefined
+        if (error === true) {
+            displayNumber = '0';
+            acButton.textContent = "AC";
+            displayTop.textContent = ``;
+            displayBottom.textContent = `${displayNumber}`;
+            error = false;
+        }
         // Prevent Trailing Zero
         if (checkOperatorState() === true) {
             if (value != '.' && runOnce != true) {
@@ -130,6 +137,7 @@ let subtractClicked = false;
 let multiplyClicked = false;
 let divideClicked = false;
 let operatorType = '';
+let error = false;
 
 opButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -157,6 +165,9 @@ opButtons.forEach(btn => {
             }, 250);
             y = parseFloat(displayNumber)
             displayNumber = operate(x, y, operatorType);
+            if (displayNumber === 'ERROR') {
+                error = true;
+            }
             if (displayNumber > 999999999 || displayNumber < -999999999) {
                 displayNumber = displayNumber.toExponential(0);
             }

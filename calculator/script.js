@@ -133,19 +133,28 @@ let operatorType = '';
 
 opButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+        clearOpAnimation();
         const operation = btn.getAttribute('value');
         switch(operation) {
             case '+':
                 addClicked = true;
+                btn.setAttribute('id', 'currentOperatorMode');
             case '-':
                 subtractClicked = true;
+                btn.setAttribute('id', 'currentOperatorMode');
             case 'x':
                 multiplyClicked = true;
+                btn.setAttribute('id', 'currentOperatorMode');
             case '/':
                 divideClicked = true;
+                btn.setAttribute('id', 'currentOperatorMode');
         }
 
         if (operation === '=') {
+            btn.setAttribute('id', 'equalButtonClickAnimations');
+            setTimeout(function () {
+                btn.removeAttribute('id');
+            }, 250);
             y = parseFloat(displayNumber)
             displayNumber = operate(x, y, operatorType);
             if (displayNumber > 999999999 || displayNumber < -999999999) {
@@ -189,4 +198,11 @@ const resetOperations = function() {
     multiplyClicked = false;
     divideClicked = false;
     runOnce = false;
+}
+
+// Clear Operator Mode Button Animation
+const clearOpAnimation = function () {
+    opButtons.forEach(btn => {
+            btn.removeAttribute('id');
+    });
 }

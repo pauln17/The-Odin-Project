@@ -105,3 +105,8 @@ button[name="xButtonClickAnimations"] {
     background: white;
     color: rgb(231, 155, 12);
 }
+
+#equalButtonClickAnimations {
+    background: white;
+    color: black;
+}

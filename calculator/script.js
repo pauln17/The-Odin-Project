@@ -47,7 +47,10 @@ topButtons.forEach(btn => {
 
         if (type === 'clear'){
             displayNumber = '0';
+            x = '';
+            y = '';
             clearOpAnimation();
+            resetOperations();
             acButton.textContent = "AC";
             displayTop.textContent = ``;
             displayBottom.textContent = `${displayNumber}`;
@@ -84,10 +87,13 @@ numberButtons.forEach(btn => {
         // Clear if calculator display showed undefined
         if (error === true) {
             displayNumber = '0';
+            x = '';
+            y = '';
+            clearOpAnimation();
+            resetOperations();
             acButton.textContent = "AC";
             displayTop.textContent = ``;
             displayBottom.textContent = `${displayNumber}`;
-            error = false;
         }
         // Prevent Trailing Zero
         if (checkOperatorState() === true) {
@@ -163,7 +169,7 @@ opButtons.forEach(btn => {
                 btn.setAttribute('id', 'currentOperatorMode');
         }
 
-        if (operation === '=') {
+        if (operation === '=' && checkOperatorState() === true) {
             btn.setAttribute('id', 'equalButtonClickAnimations');
             setTimeout(function () {
                 btn.removeAttribute('id');

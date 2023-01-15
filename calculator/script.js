@@ -146,15 +146,19 @@ opButtons.forEach(btn => {
         switch(operation) {
             case '+':
                 addClicked = true;
+                hasNegative = false;
                 btn.setAttribute('id', 'currentOperatorMode');
             case '-':
                 subtractClicked = true;
+                hasNegative = false;
                 btn.setAttribute('id', 'currentOperatorMode');
             case 'x':
                 multiplyClicked = true;
+                hasNegative = false;
                 btn.setAttribute('id', 'currentOperatorMode');
             case '/':
                 divideClicked = true;
+                hasNegative = false;
                 btn.setAttribute('id', 'currentOperatorMode');
         }
 

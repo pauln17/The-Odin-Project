@@ -12,57 +12,61 @@ const divide = function(x, y) {
     return x / y;
 }
 
+// Operate Function
 const operate = function(x, y, operator) {
-    if (operator === 'add') {
-        return add(x, y).toFixed(2);
+    switch (operator) {
+        case '+':
+            return add(x, y);
+        case '-':
+            return subtract(x, y);
+        case 'x':
+            return multiply(x, y);
+        case '/':
+            if (y === 0) return 'ERROR';
+            return divide(x, y);
     }
-    else if (operator === 'subtract') {
-        return subtract(x, y).toFixed(2);
-    }
-    else if (operator === 'multiply') {
-        return multiply(x, y).toFixed(2);
-    }
-    if (operator === 'divide') {
-
-        return divide(x, y).toFixed(2);
-    }
+    return null;
 }
 
 // Populate Display
-let display = '0'; // Variable for storing values for the display
+let displayNumber = '0'; // Variable for storing values for the display
+let hasNegative = false; // Variable for toggling negative
 
-// Top Buttons
+// Top Buttons/Horizontal Axis Buttons
 const topButtons = document.querySelectorAll('.top-buttons');
 const acButton = document.querySelector('#acButton'); // Selecting AC button to transition from AC or C based on display value
 topButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+        // Click Animation
         btn.setAttribute('name', 'xButtonClickAnimations');
         setTimeout(function () {
             btn.removeAttribute('name');
         }, 250);
 
         const type = btn.getAttribute('value');
+
         if (type === 'clear'){
-            display = '0';
+            displayNumber = '0';
             acButton.textContent = "AC";
             displayTop.textContent = ``;
-            displayBottom.textContent = `${display}`;
-            clearBooleans();
+            displayBottom.textContent = `${displayNumber}`;
         }
-        else if (type === 'sign' && display != '0') {
-            if (display[0] !== '-') {
-                display = '-' + display;
-                displayBottom.textContent = `${display}`;
+        else if (type === 'sign' && displayNumber != '0') {
+            if (hasNegative === false) {
+                displayNumber = '-' + displayNumber;
+                displayBottom.textContent = `${displayNumber}`;
+                hasNegative = true;
             }
-            else {
-                display = display.slice(1);
-                displayBottom.textContent = `${display}`;
+            else if (hasNegative === true) {
+                displayNumber = displayNumber.toString().slice(1);
+                displayBottom.textContent = `${displayNumber}`;
+                hasNegative = false;
             }
         }
-        else if (type === 'percentage' && display != '0') {
-            display = parseFloat(display) / 100; // Long Decimal Error
-            display = `${display.toPrecision(1)}`;
-            displayBottom.textContent = `${display}`;
+        else if (type === 'percentage' && displayNumber != '0') {
+            displayNumber = parseFloat(displayNumber) / 100; // Long Decimal Error
+            displayNumber = `${displayNumber.toPrecision(1)}`;
+            displayBottom.textContent = `${displayNumber}`;
         }
     });
 });
@@ -71,140 +75,114 @@ topButtons.forEach(btn => {
 const numberButtons = document.querySelectorAll('.num-buttons');
 const displayTop = document.querySelector('.savedEquations');
 const displayBottom = document.querySelector('.currentEquations');
-let lock = false;
+let runOnce = false;
 
 numberButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const value = btn.getAttribute('value');
-        // Continuation of Operator Buttons Function Below
-        if (checkAnyOperator() === true) {
-            lock = true;
-            if (display === currentValue) {
-                display = value;
+        
+        // Prevent Trailing Zero
+        if (checkOperatorState() === true) {
+            if (value != '.' && runOnce != true) {
+                displayNumber = value;
+                runOnce = true;
+            } 
+            else if (displayNumber.length <= 8 && displayNumber !== '0') {
+    
+                // Prevents Multiple Decimals
+                if (value === '.' && displayNumber.includes('.') === true) {
+                    return;
+                }
+    
+                // Add To Display
+                displayNumber += value;
             }
-            else {
-                display += value;
-            }
-            displayBottom.textContent = `${display}`;
         }
-        if (lock === false) {
-            if (display === '0') {
-                display = value;
+        else {
+            if (displayNumber === '0' && value != '.') {
+                displayNumber = value;
                 acButton.textContent = 'C';
             } 
-            else {
-                display += value;
+            else if (displayNumber.length <= 8 && displayNumber !== '0') {
+    
+                // Prevents Multiple Decimals
+                if (value === '.' && displayNumber.includes('.') === true) {
+                    return;
+                }
+    
+                // Add To Display
+                displayNumber += value;
             }
-            displayBottom.textContent = `${display}`;
         }
 
+
+        // Set Display
+        displayBottom.textContent = `${displayNumber}`;
     });
 });
 
 // Operator Buttons
 const opButtons = document.querySelectorAll('.op-buttons');
-let addOp = false;
-let subtractOp = false;
-let multiplyOp = false;
-let divideOp = false;
-let currentValue = '';
+let x;
+let y;
+let addClicked = false;
+let subtractClicked = false;
+let multiplyClicked = false;
+let divideClicked = false;
+let operatorType = '';
 
 opButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        const operator = btn.getAttribute('value');
-        if (display === '0') return;
-        if (operator === '/') {
-            currentValue = display;
-            clearBooleans();
-            divideOp = true;
-            btn.setAttribute('id', 'currentOperatorMode');
-        }
-        else if (operator === 'x') {
-            currentValue = display;
-            clearBooleans();
-            multiplyOp = true;
-            btn.setAttribute('id', 'currentOperatorMode');
-        }
-        else if (operator === '-') {
-            currentValue = display;
-            clearBooleans();
-            subtractOp = true;
-            btn.setAttribute('id', 'currentOperatorMode');
-        }
-        else if (operator === '+') {
-            currentValue = display;
-            clearBooleans();
-            addOp = true;
-            btn.setAttribute('id', 'currentOperatorMode');
-        }
-        if (operator === '=') {
-            if (addOp === true) {
-                x = parseFloat(currentValue);
-                y = parseFloat(display);
-                display = add(x, y);
-                displayBottom.textContent = `${display}`;
-                displayTop.textContent = `${x} + ${y} =`
-                clearBooleans();
-            }
-            if (subtractOp === true) {
-                x = parseFloat(currentValue);
-                y = parseFloat(display);
-                display = add(x, y);
-                displayBottom.textContent = `${display}`;
-                displayTop.textContent = `${x} - ${y} =`
-                clearBooleans();
-            }
-            if (multiplyOp === true) {
-                x = parseFloat(currentValue);
-                y = parseFloat(display);
-                display = multiply(x, y);
-                displayBottom.textContent = `${display}`;
-                displayTop.textContent = `${x} x ${y} =`
-                clearBooleans();
-            }
-            if (divideOp === true) {
-                x = parseFloat(currentValue);
-                y = parseFloat(display);
-                display = divide(x, y);
-                displayBottom.textContent = `${display}`;
-                displayTop.textContent = `${x} / ${y} =`
-                clearBooleans();
-            }
+        const operation = btn.getAttribute('value');
+        switch(operation) {
+            case '+':
+                addClicked = true;
+            case '-':
+                subtractClicked = true;
+            case 'x':
+                multiplyClicked = true;
+            case '/':
+                divideClicked = true;
         }
 
+        if (operation === '=') {
+            y = parseFloat(displayNumber)
+            displayNumber = operate(x, y, operatorType);
+            if (displayNumber > 999999999 || displayNumber < 999999999) {
+                displayNumber = displayNumber.toExponential(0);
+            }
+            resetCalculator();
+            displayBottom.textContent = `${displayNumber}`;
+
+        } else {
+            operatorType = operation;
+            x = parseFloat(displayNumber);
+        }
     });
-}); // Continued in Numbers Function
+});
 
-// Function to clear booleans and operator button animation
-function clearBooleans() {
-    addOp = false;
-    subtractOp = false;
-    multiplyOp = false;
-    divideOp = false;
-    lock = false;
-    clearOperatorAnimation();
-}
-
-// Function to check if any of the operator booleans are true
-function checkAnyOperator () {
-    if (addOp === true) {
+// Function to determine if any of the operator buttons were clicked
+const checkOperatorState = function() {
+    if (addClicked === true) {
         return true;
     }
-    else if (subtractOp === true) {
+    if (subtractClicked === true) {
         return true;
     }
-    else if (multiplyOp === true) {
+    if (multiplyClicked === true) {
         return true;
     }
-    else if (divideOp === true) {
+    if (divideClicked === true) {
         return true;
     }
     return false;
 }
 
-// Function to clear operator button animation mode
-function clearOperatorAnimation() {
-    opButtons.forEach(btn => {
-        btn.removeAttribute('id');
-    });
+// Reset Function
+const resetCalculator = function() {
+    addClicked = false;
+    subtractClicked = false;
+    multiplyClicked = false;
+    divideClicked = false;
+    runOnce = false;
 }

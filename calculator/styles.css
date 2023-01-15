@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #DDD;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    color: white;
+    background: black;
+    width: 275px;
+    height: 425px;
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.display {
+    margin: 0 15px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    overflow: hidden;
+}
+
+.display p {
+    height: 15px;
+    display: block;
+    font-size: 15px;
+}
+
+.display h4 {
+    height: 50px;
+    font-size: 42px;
+    font-weight: 100;
+}
+
+button {
+    color: white;
+    font-size: 28px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: none;
+}
+
+.x-buttons button {
+    color: black;
+    background: rgb(206, 206, 206);
+    transition: all 0.2s ease-in;
+}
+
+.numbers button {
+    background: rgb(44, 44, 44);
+}
+
+.y-buttons button {
+    background: rgb(231, 155, 12);
+    transition: all 0.5s ease-in;
+}
+
+.numbers button[name="zero"] {
+    height: 65px;
+    width: 130px;
+    border-radius: 35px;
+}
+
+button[name="xButtonClickAnimations"] {
+    background: rgb(255, 255, 255);
+}
+
+.inputContainer {
+    display: flex;
+}
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.numbers {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.y-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 5px;
+}
+
+
+#currentOperatorMode {
+    background: white;
+    color: rgb(231, 155, 12);
+}
+
+#equalButtonClickAnimations {
+    background: white;
+    color: black;
+}
+
+@media (max-width: 326px) {
+    .container {
+        width: 200px;
+        height: 350px;
+    }
+
+    button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .numbers button[name="zero"] {
+        height: 45px;
+        width: 95px;
+        border-radius: 35px;
+    }
+
+    .display p {
+        height: 15px;
+        display: block;
+        font-size: 15px;
+    }
+    
+    .display h4 {
+        height: 50px;
+        font-size: 36px;
+        font-weight: 100;
+    }
+
+    .x-buttons {
+        translate: -4.5px;
+    }
+    
+}

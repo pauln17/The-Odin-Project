@@ -148,10 +148,14 @@ opButtons.forEach(btn => {
         if (operation === '=') {
             y = parseFloat(displayNumber)
             displayNumber = operate(x, y, operatorType);
-            if (displayNumber > 999999999 || displayNumber < 999999999) {
+            if (displayNumber > 999999999 || displayNumber < -999999999) {
                 displayNumber = displayNumber.toExponential(0);
             }
-            resetCalculator();
+            if (displayNumber.toString().length >= 10) {
+                displayNumber = displayNumber.toString().slice(0, 11);
+            }
+            resetOperations();
+            displayTop.textContent = `${x} ${operatorType} ${y} = `;
             displayBottom.textContent = `${displayNumber}`;
 
         } else {
@@ -179,7 +183,7 @@ const checkOperatorState = function() {
 }
 
 // Reset Function
-const resetCalculator = function() {
+const resetOperations = function() {
     addClicked = false;
     subtractClicked = false;
     multiplyClicked = false;

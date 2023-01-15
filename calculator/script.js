@@ -47,6 +47,7 @@ topButtons.forEach(btn => {
 
         if (type === 'clear'){
             displayNumber = '0';
+            clearOpAnimation();
             acButton.textContent = "AC";
             displayTop.textContent = ``;
             displayBottom.textContent = `${displayNumber}`;

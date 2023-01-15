@@ -133,12 +133,12 @@ button[name="xButtonClickAnimations"] {
     .display p {
         height: 15px;
         display: block;
-        font-size: 15px;
+        font-size: 12px;
     }
     
     .display h4 {
         height: 50px;
-        font-size: 36px;
+        font-size: 32px;
         font-weight: 100;
     }
 

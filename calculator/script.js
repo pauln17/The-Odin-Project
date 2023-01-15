@@ -94,6 +94,7 @@ numberButtons.forEach(btn => {
             acButton.textContent = "AC";
             displayTop.textContent = ``;
             displayBottom.textContent = `${displayNumber}`;
+            error = false;
         }
         // Prevent Trailing Zero
         if (checkOperatorState() === true) {
@@ -148,6 +149,7 @@ let error = false;
 
 opButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+        if (error === true) return;
         clearOpAnimation();
         const operation = btn.getAttribute('value');
         switch(operation) {
@@ -176,11 +178,14 @@ opButtons.forEach(btn => {
             }, 250);
             y = parseFloat(displayNumber)
             displayNumber = operate(x, y, operatorType);
+            console.log(displayNumber)
             if (displayNumber === 'ERROR') {
                 error = true;
             }
             if (displayNumber > 999999999 || displayNumber < -999999999) {
                 displayNumber = displayNumber.toExponential(0);
+                x = x.toExponential(0);
+                error = true;
             }
             if (displayNumber.toString().length >= 10) {
                 displayNumber = displayNumber.toString().slice(0, 11);

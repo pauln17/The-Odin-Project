@@ -52,7 +52,6 @@ topButtons.forEach(btn => {
             clearOpAnimation();
             resetOperations();
             acButton.textContent = "AC";
-            displayTop.textContent = ``;
             displayBottom.textContent = `${displayNumber}`;
         }
         else if (type === 'sign' && displayNumber != '0') {
@@ -77,7 +76,6 @@ topButtons.forEach(btn => {
 
 // Number Buttons
 const numberButtons = document.querySelectorAll('.num-buttons');
-const displayTop = document.querySelector('.savedEquations');
 const displayBottom = document.querySelector('.currentEquations');
 let runOnce = false;
 
@@ -92,7 +90,6 @@ numberButtons.forEach(btn => {
             clearOpAnimation();
             resetOperations();
             acButton.textContent = "AC";
-            displayTop.textContent = ``;
             displayBottom.textContent = `${displayNumber}`;
             error = false;
         }
@@ -191,7 +188,6 @@ opButtons.forEach(btn => {
                 displayNumber = displayNumber.toString().slice(0, 11);
             }
             resetOperations();
-            displayTop.textContent = `${x} ${operatorType} ${y} = `;
             displayBottom.textContent = `${displayNumber}`;
 
         } else {

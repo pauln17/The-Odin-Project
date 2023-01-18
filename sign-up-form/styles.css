@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(243, 243, 243);
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    background: url("images/water.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+.logo {
+    width: max(75px, 20%);
+    height: auto;
+}
+
+.logo-background {
+    color: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.35);
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    margin-top: 175px;
+}
+
+.logo-background h1 {
+    font-size: 3rem;
+    font-weight: 250;
+}
+
+.sign-up-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    font-size: 28px;
+    margin: 0 10% 5%;
+    text-align: center;
+}
+
+
+.sign-up-form{
+    background: white;
+    width: 100%;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.sign-up-form p {
+    font-size: 48px;
+    text-align: center;
+    margin-top: 2%;
+}
+
+form {
+    padding: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 2px;
+    height: 1.5vw;
+    border-radius: 5px;
+    border: 1px solid #E5E7EB;
+    outline: 0;
+}
+
+.create-account {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin: 35px 0 0 75px;
+    gap: 25px;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+    background: #596D48;
+    border: 0;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+
+button:hover {
+    background: rgb(0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+    font-weight: 1000;
+    color: rgb(64, 95, 64);
+}
+
+.valid {
+    border: 2px solid rgb(49, 255, 30);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.error{
+    border: 2px solid rgb(255, 47, 47);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.pwError, .telError {
+    display: flex;
+    color: red;
+}
+
+#first_name:valid, #last_name:valid {
+    border: 2px solid rgb(49, 255, 30);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 713px) {
+    body {
+        flex-direction: column;
+    }
+
+    .image {
+        align-items: center;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .logo-background {
+        width: 100%;
+        margin-top: 0px;
+        height: fit-content;
+    }
+
+    .logo {
+        width: max(25px, 10%);
+        height: auto;
+    }
+
+    .logo-background h1 {
+        font-size: 2rem;
+        font-weight: 250;
+    }
+
+    .intro-text {
+        font-size: 20px;
+    }
+
+    .input-group {
+        text-align: center;
+    }
+
+    input {
+        height: 2vh;
+        width: 125px;
+    }
+
+    .create-account {
+        margin: 25px 0 0 0;
+        align-items: center;
+    }
+}

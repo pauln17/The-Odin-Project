@@ -7,6 +7,10 @@ let total = grid.rows * grid.cols;
 // Determine Grid Size-
 const sizeOne = document.querySelector('.size1');
 sizeOne.addEventListener('click', () => { 
+    sizeOne.setAttribute('id', 'clicked');
+    setTimeout(function () {
+        sizeOne.removeAttribute('id');
+    }, 250);
     clearGrid();
     grid = {rows: 10, cols:10};
     total = grid.rows * grid.cols;
@@ -16,6 +20,10 @@ sizeOne.addEventListener('click', () => {
 });
 const sizeTwo = document.querySelector('.size2');
 sizeTwo.addEventListener('click', () => { 
+    sizeTwo.setAttribute('id', 'clicked');
+    setTimeout(function () {
+        sizeTwo.removeAttribute('id');
+    }, 250);
     clearGrid();
     grid = {rows: 30, cols:30};
     total = grid.rows * grid.cols;
@@ -25,6 +33,10 @@ sizeTwo.addEventListener('click', () => {
 });
 const sizeThree = document.querySelector('.size3');
 sizeThree.addEventListener('click', () => { 
+    sizeThree.setAttribute('id', 'clicked');
+    setTimeout(function () {
+        sizeThree.removeAttribute('id');
+    }, 250);
     clearGrid();
     grid = {rows: 50, cols:50};
     total = grid.rows * grid.cols;

@@ -68,7 +68,7 @@ topButtons.forEach(btn => {
         }
         else if (type === 'percentage' && displayNumber != '0') {
             displayNumber = parseFloat(displayNumber) / 100; // Long Decimal Error
-            displayNumber = `${displayNumber.toPrecision(1)}`;
+            displayNumber = `${displayNumber.toPrecision(2)}`;
             displayBottom.textContent = `${displayNumber}`;
         }
     });
@@ -111,7 +111,7 @@ numberButtons.forEach(btn => {
             }
         }
         else {
-            if (displayNumber === '0' && value != '.') {
+            if (displayNumber === '0') {
                 displayNumber = value;
                 acButton.textContent = 'C';
             } 

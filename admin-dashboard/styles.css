@@ -15,7 +15,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 0.75fr 3fr;
+    grid-template-columns: 0.5fr 3fr;
 }
 
 .container div {
@@ -34,7 +34,7 @@ body {
 
 .dashboard-title h1 {
     display: flex;
-    font-size: 32px;
+    font-size: 24px;
     justify-content: start;
     align-items: center;
     gap: 10px;
@@ -45,7 +45,7 @@ body {
 }
 
 .dashboard ul {
-    font-size: 20px;
+    font-size: 18px;
     display: grid;
     list-style: none;
     gap: 15px;
@@ -183,5 +183,76 @@ body {
 
 .right-section {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    max-height: 0.25fr;
+}
+
+.right-section h3 {
+    display: grid;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.announcements {
+    display: grid;
+    box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 0 25px 25px 25px;
+}
+
+.announcement-items {
+    border-bottom: 1px solid rgb(68, 68, 68, 0.6);
+}
+
+.trending {
+    display: grid;
+    box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 0 25px 25px 25px;
+}
+
+.trending-items {
+    display: flex;
+    align-items: center;
+}
+
+.trending-items span {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid;
+}
+
+.img1 {
+    background: url("images/john.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.img2 {
+    background: url("images/rose.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.img3 {
+    background: url("images/cornelius.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.img4 {
+    background: url("images/elonmusk.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.trending-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.trending-user-info p + p{
+    color: grey;
 }

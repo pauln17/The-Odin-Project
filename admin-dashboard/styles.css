@@ -28,10 +28,20 @@ body {
     grid-row: 1 / 3;
 }
 
+.dashboard-title {
+    translate: -3%;
+}
+
 .dashboard-title h1 {
+    display: flex;
     font-size: 32px;
-    display: grid;
-    justify-self: start;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-title img {
+    width: 45px;
 }
 
 .dashboard ul {
@@ -41,16 +51,26 @@ body {
     gap: 15px;
 }
 
+.dashboard ul li i {
+    width: 25px;
+    margin-right: 5px;
+}
+
 .dashboard ul li a {
     color: white;
     text-decoration: none;
+    text-align: end;
+    transition: all 0.4s ease-in;
+}
+
+.dashboard ul li a:hover {
+    text-decoration-line: underline;
 }
 
 .dashboard-links {
     display: grid;
     grid-template-rows: 1fr;
     gap: 50px;
-    justify-content: start;
 }
 
 .header {
@@ -73,14 +93,21 @@ body {
 
 .account-info {
     display: grid;
-    grid-template-columns: repeat(3, 75px);
+    grid-template-columns: repeat(3, 1fr);
     justify-self: end;
     justify-items: center;
     align-items: center;
     text-align: center;
 }
 
-.account-info h4 {
+.account-info img {
+    margin: 10px 10px 10px 30px;
+    width: 20px;
+}
+
+.account-info p {
+    font-size: 12px;
+    margin: 10px;
     cursor: pointer;
 }
 
@@ -107,8 +134,54 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     cursor: pointer;
+    border: 2px solid;
+    margin: 10px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.main-content h3 {
+    padding-top: 25px;
+    padding-left: 20px;
+    font-size: 32px;
+}
+
+.portfolio {
+    grid-column-start: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.projects {
+    border-left: 10px solid;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.projects h4 {
+    font-size: 24px;
+}
+
+.interact-icons {
+    display: flex;
+    justify-content: end;
+    height: 100%;
+    align-items: end;
+    gap: 45px;
+}
+
+.right-section {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
 }

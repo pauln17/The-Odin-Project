@@ -4,8 +4,9 @@
 }
 
 img {
-    width: 25px;
+    width: 20px;
     height: auto;
+    cursor: pointer;
 }
 
 body {
@@ -23,16 +24,18 @@ body {
 
 .dashboard {
     color: white;
-    background: rgb(6, 138, 182);
+    background: rgb(0, 0, 0);
     grid-row: 1 / 3;
 }
 
 .dashboard-title h1 {
+    font-size: 32px;
     display: grid;
     justify-self: start;
 }
 
 .dashboard ul {
+    font-size: 20px;
     display: grid;
     list-style: none;
     gap: 15px;
@@ -50,6 +53,62 @@ body {
     justify-content: start;
 }
 
+.header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    box-shadow: 2px 7px 7px rgba(0, 0, 0, 0.2);
+}
 
+.search {
+    display: grid;
+    justify-content: start;
+    align-items: center;
+}
 
+.search form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
+.account-info {
+    display: grid;
+    grid-template-columns: repeat(3, 75px);
+    justify-self: end;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.account-info h4 {
+    cursor: pointer;
+}
+
+.search form button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.search form input {
+    background: rgb(182, 182, 182);
+    width: 25vw;
+    height: 20px;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    border: 1px solid black;
+    padding: 5px 5px 5px 8px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.profile-picture {
+    background: url("images/profile-picture.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}

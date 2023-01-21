@@ -214,18 +214,28 @@ body {
     box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin: 0 25px 25px 25px;
+    gap: 15px;
 }
 
 .trending-items {
     display: flex;
     align-items: center;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.4s linear;
 }
+
+.trending-items:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
 
 .trending-items span {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     border: 1px solid;
+    cursor: pointer;
 }
 
 .img1 {

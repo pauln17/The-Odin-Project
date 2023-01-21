@@ -2,3 +2,54 @@
     margin: 0;
     padding: 0;
 }
+
+img {
+    width: 25px;
+    height: auto;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 0.75fr 3fr;
+}
+
+.container div {
+    padding: 15px;
+}
+
+.dashboard {
+    color: white;
+    background: rgb(6, 138, 182);
+    grid-row: 1 / 3;
+}
+
+.dashboard-title h1 {
+    display: grid;
+    justify-self: start;
+}
+
+.dashboard ul {
+    display: grid;
+    list-style: none;
+    gap: 15px;
+}
+
+.dashboard ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.dashboard-links {
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 50px;
+    justify-content: start;
+}
+
+
+
+

@@ -24,8 +24,9 @@ const operate = function(x, y, operator) {
         case '/':
             if (y === 0) return 'ERROR';
             return divide(x, y);
+        default:
+            return null;
     }
-    return null;
 }
 
 // Populate Display

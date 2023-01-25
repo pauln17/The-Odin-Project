@@ -24,13 +24,13 @@ const operate = function(x, y, operator) {
         case '/':
             if (y === 0) return 'ERROR';
             return divide(x, y);
+        default:
+            return null;
     }
-    return null;
 }
 
 // Populate Display
 let displayNumber = '0'; // Variable for storing values for the display
-let hasNegative = false; // Variable for toggling negative
 
 // Top Buttons/Horizontal Axis Buttons
 const topButtons = document.querySelectorAll('.top-buttons');
@@ -55,15 +55,13 @@ topButtons.forEach(btn => {
             displayBottom.textContent = `${displayNumber}`;
         }
         else if (type === 'sign' && displayNumber != '0') {
-            if (hasNegative === false) {
-                displayNumber = '-' + displayNumber;
-                displayBottom.textContent = `${displayNumber}`;
-                hasNegative = true;
-            }
-            else if (hasNegative === true) {
+            if (displayNumber.toString().includes("-") === true) {
                 displayNumber = displayNumber.toString().slice(1);
                 displayBottom.textContent = `${displayNumber}`;
-                hasNegative = false;
+            } 
+            else if (displayNumber.toString().includes("-") === false) {
+                displayNumber = '-' + displayNumber;
+                displayBottom.textContent = `${displayNumber}`;
             }
         }
         else if (type === 'percentage' && displayNumber != '0') {
@@ -152,19 +150,15 @@ opButtons.forEach(btn => {
         switch(operation) {
             case '+':
                 addClicked = true;
-                hasNegative = false;
                 btn.setAttribute('id', 'currentOperatorMode');
             case '-':
                 subtractClicked = true;
-                hasNegative = false;
                 btn.setAttribute('id', 'currentOperatorMode');
             case 'x':
                 multiplyClicked = true;
-                hasNegative = false;
                 btn.setAttribute('id', 'currentOperatorMode');
             case '/':
                 divideClicked = true;
-                hasNegative = false;
                 btn.setAttribute('id', 'currentOperatorMode');
         }
 

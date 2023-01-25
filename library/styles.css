@@ -36,11 +36,16 @@ body {
     right: 3%;
     bottom: 3%;
     cursor: pointer;
-    transition: 0.1s linear;
+    transform: scale(0);
+    transition: scale 0.1s linear;
 }
 
 .add-book:hover {
     scale: 1.2;
+}
+
+.add-book#active {
+    transform: scale(1);
 }
 
 .container {
@@ -60,7 +65,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     z-index: 1;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }
 
 .add-book-popup#active {

@@ -19,9 +19,11 @@ overlayPopUp.addEventListener('click', () => {
 const openPopUp = function() {
     popUp.setAttribute('id', 'active');
     overlayPopUp.setAttribute('id', 'active');
+    openPopUpButton.removeAttribute('id');
 }
 
 const closePopUp = function() {
     popUp.removeAttribute('id');
     overlayPopUp.removeAttribute('id');
+    openPopUpButton.setAttribute('id', 'active');
 }

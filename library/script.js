@@ -1,4 +1,4 @@
-// Add new item popup function
+// A section using query selectors to create an animated pop-up function for users to input the information of their book
 const openPopUpButton = document.querySelector('[data-popup-open]');
 const closePopUpButton = document.querySelector('[data-popup-close]');
 const overlayPopUp = document.querySelector('.overlay');

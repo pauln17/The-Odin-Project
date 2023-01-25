@@ -91,7 +91,6 @@ body {
 
 .popup-body {
     padding: 15px;
-    font-size: 2.25vw;
 }
 
 .overlay {
@@ -108,4 +107,48 @@ body {
 .overlay#active {
     opacity: 1;
     pointer-events: all;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+}
+
+.input-group label {
+    font-size: 1.5vw;
+    font-weight: 1000;
+}
+
+.input-group input {
+    font-size: 1.25vw;
+    outline: 0;
+    background: transparent;
+    color: white;
+    border: none;
+    border-bottom: 1px dashed;
+    width: 100%;
+}
+
+.add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+}
+
+.add-button button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2vw;
+    font-weight: 1000;
+    width: 35%;
+    height: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+.add-button button:hover {
+    scale: 1.025;
 }

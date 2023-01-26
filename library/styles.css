@@ -148,6 +148,7 @@ form {
 
 .add-button button {
     background: white;
+    color: black;
     font-family: 'Poppins', sans-serif;
     font-size: calc(1.5vw + 1vh);
     font-weight: 1000;

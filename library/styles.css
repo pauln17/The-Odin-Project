@@ -149,6 +149,8 @@ form {
     width: 35%;
     height: 100%;
     border-radius: 15px;
+    outline: 0;
+    border: none;
     cursor: pointer;
     transition: 0.1s ease-in-out;
 }

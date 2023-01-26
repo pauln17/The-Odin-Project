@@ -31,6 +31,7 @@ const closePopUp = function() {
 
 // Obtains user-input and creates a book object from book constructor and then stores it into library array
 let myLibrary = [];
+let permanentLibrary = [];
 
 function Book(title, author, pages, pagesRead) {
     this.title = title;
@@ -46,6 +47,9 @@ function addBookToLibrary() {
     const pagesRead = document.querySelector('#pages-read');
 
     const newBook = new Book(title.value, author.value, pages.value, pagesRead.value);
+    
+    permanentLibrary.push(newBook);
+    myLibrary = [];
     myLibrary.push(newBook);
     createLibrary();
 }

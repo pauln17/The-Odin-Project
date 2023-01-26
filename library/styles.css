@@ -99,7 +99,7 @@ body {
 }
 
 .overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     opacity: 0;
     position: fixed;
     top: 0;
@@ -170,11 +170,66 @@ form {
 
 .book-info {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fit, 250px);
     border: 1px solid;
     border-radius: 15px;
     padding: 15px;
     height: 90%;
+    gap: 25px;
 }
+
+
+.book {
+    background: lightblue;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border: 3px solid;
+    border-radius: 10px;
+}
+
+.book-description {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
+}
+.book h4 {
+    font-size: 3vw;
+}
+
+.book h5 {
+    font-size: 1.75vw;
+}
+
+.book p {
+    font-size: 1.5vw;
+}
+
+.book-remove button {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    color: black;
+    font-size: 3vw;
+    width: 7.5vw;
+    height: 4.25vh;
+    cursor: pointer;
+    border: 2px solid black;
+    outline: 0;
+    border-radius: 5px;
+    transition: 0.2s ease-in-out;
+}
+
+.book-remove button:hover {
+    background: rgb(186, 186, 186);
+}
+
 
 @media (max-width: 240px) {
     .header {
@@ -187,5 +242,6 @@ form {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin: 0 0 0 0;
     }
 }

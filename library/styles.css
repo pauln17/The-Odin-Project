@@ -124,7 +124,7 @@ form {
 }
 
 .input-group input {
-    font-size: 1.25vw;
+    font-size: 0.75vw;
     outline: 0;
     background: transparent;
     color: white;
@@ -204,15 +204,16 @@ form {
 }
 
 .book h4 {
-    font-size: 1.5vw;
+    font-size: calc(1.25vw + 1vh);
 }
 
 .book h5 {
-    font-size: 1.25vw;
+    font-style: italic;
+    font-size: calc(0.65vw + 1vh);
 }
 
 .book p {
-    font-size: 1vw;
+    font-size: calc(0.45vw + 1vh);
 }
 
 .book-remove button {
@@ -247,7 +248,7 @@ form {
     align-items: center;
 }
 
-@media (max-width: 260px) {
+@media (max-width: 325px) {
     .book-info {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }

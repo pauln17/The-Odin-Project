@@ -39,7 +39,7 @@ function Book(title, author, pages, pagesRead) {
     this.pagesRead = pagesRead;
 }
 
-function addBookToLibrary(event) {
+function addBookToLibrary() {
     const title = document.querySelector('#title');
     const author = document.querySelector('#author');
     const pages = document.querySelector('#total-pages');
@@ -47,6 +47,7 @@ function addBookToLibrary(event) {
 
     const newBook = new Book(title.value, author.value, pages.value, pagesRead.value);
     myLibrary.push(newBook);
+    createLibrary();
 }
 
 // Prevents default form submission
@@ -56,4 +57,35 @@ form.addEventListener('submit', (e) => {
     addBookToLibrary()
 })
 
+// Function to create book elements contained within library array and display them
+function createLibrary() {
+    myLibrary.forEach((book) => {
+        const libraryDisplay = document.querySelector('.book-info');
+
+        const bookCard = document.createElement('div');
+        bookCard.classList.add('book');
+        const bookDescription = document.createElement('div');
+        bookDescription.classList.add('book-description');
+
+        const titleText = document.createElement('h4');
+        const authorText = document.createElement('h5');
+        const pagesText = document.createElement('p');
+        const pagesReadText = document.createElement('p');
+        titleText.textContent = `Title: ${book.title}`;
+        authorText.textContent = `Author: ${book.author}`;
+        pagesText.textContent = `Total Pages: ${book.pages}`;
+        pagesReadText.textContent = `Pages Read: ${book.pagesRead}`;
+
+        const bookRemove = document.createElement('div');
+        const bookRemoveButton = document.createElement('button');
+        bookRemove.classList.add('book-remove');
+        bookRemoveButton.setAttribute('type', 'submit');
+        bookRemoveButton.innerHTML = '&times;';
+
+        bookDescription.append(titleText, authorText, pagesText, pagesReadText);
+        bookRemove.appendChild(bookRemoveButton);
+        bookCard.append(bookDescription, bookRemove);
+        libraryDisplay.appendChild(bookCard);
+    });
+}
 

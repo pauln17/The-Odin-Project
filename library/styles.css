@@ -128,11 +128,11 @@ form {
 }
 
 .input-group input {
-    font-size: calc(0.75vw + 1vh);;
+    font-size: calc(0.65vw + 1vh);;
     outline: 0;
     background: transparent;
     color: white;
-    border: none;
+    border: 0;
     border-bottom: 1px solid;
     width: 100%;
 }

@@ -75,8 +75,8 @@ function createLibrary() {
         const authorText = document.createElement('h5');
         const pagesText = document.createElement('p');
         const pagesReadText = document.createElement('p');
-        titleText.textContent = `Title: ${book.title}`;
-        authorText.textContent = `Author: ${book.author}`;
+        titleText.textContent = `${book.title}`;
+        authorText.textContent = `By: ${book.author}`;
         pagesText.textContent = `Total Pages: ${book.pages}`;
         pagesReadText.textContent = `Pages Read: ${book.pagesRead}`;
 

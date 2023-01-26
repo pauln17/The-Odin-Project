@@ -196,17 +196,19 @@ form {
     display: flex;
     flex-direction: column;
     gap: 2.5px;
+    word-break: break-all;
 }
+
 .book h4 {
-    font-size: 3vw;
+    font-size: 1.5vw;
 }
 
 .book h5 {
-    font-size: 1.75vw;
+    font-size: 1.25vw;
 }
 
 .book p {
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 
 .book-remove button {

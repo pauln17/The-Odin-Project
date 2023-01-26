@@ -9,88 +9,92 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="header">
-        <h1>Virtual Library</h1>
-    </div>
-
-    <div class="container">
-        <div class="add-book-popup">
-            <div class="popup-header">
-                <h3>New Item</h3>
-                <button data-popup-close class="popup-close">&times;</button>
-            </div>
-
-            <div class="popup-body">
-                <form>
-                    <div class="input-group">
-                        <label for="title">Title</label>
-                        <input type="text" id="title">
-                    </div>
-                    <div class="input-group">
-                        <label for="author">Author</label>
-                        <input type="text" id="author">
-                    </div>
-                    <div class="input-group">
-                        <label for="total-pages">Total Pages</label>
-                        <input type="text" id="total-pages">
-                    </div>
-                    <div class="input-group">
-                        <label for="pages-read">Pages Read</label>
-                        <input type="text" id="pages-read">
-                    </div>
-
-                    <div class="add-button">
-                        <button type="submit">Add</button>
-                    </div>
-                </form>
-            </div>
+    <div>
+        <div class="header">
+            <h1>Virtual Library</h1>
         </div>
+        
+        <div class="container">
+            <div class="add-book-popup">
+                <div class="popup-header">
+                    <h3>New Item</h3>
+                    <button data-popup-close class="popup-close">&times;</button>
+                </div>
 
-        <div class="overlay"></div>
-        <button id="active" class="add-book" data-popup-open=".add-book-up">+</button>
+                <div class="popup-body">
+                    <form>
+                        <div class="input-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title">
+                        </div>
+                        <div class="input-group">
+                            <label for="author">Author</label>
+                            <input type="text" id="author">
+                        </div>
+                        <div class="input-group">
+                            <label for="total-pages">Total Pages</label>
+                            <input type="text" id="total-pages">
+                        </div>
+                        <div class="input-group">
+                            <label for="pages-read">Pages Read</label>
+                            <input type="text" id="pages-read">
+                        </div>
+
+                        <div class="add-button">
+                            <button type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="overlay"></div>
+            <button id="active" class="add-book" data-popup-open=".add-book-up">+</button>
     
-        <div class="book-info-container">
-            <div class="library-label">
-                <h3>Library</h3>
-            </div>
-            <div class="book-info">
-                <div class="book">
-                    <div class="book-description">
-                        <h4>TitleTitleTitleTitleTitleTitleTitleTitle </h4>
-                        <h5><i>AuthorAuthorAuthorAuthorAuthorAuthorAuthorAuthor</i></h5>
-                        <p>Pages</p>
-                        <p>Pages Total</p>      
-                    </div>
-                    <div class="book-remove">
-                        <button type="submit">&times;</button>
-                    </div>
+            <div class="book-info-container">
+                <div class="library-label">
+                    <h3>Library</h3>
                 </div>
-                <div class="book">
-                    <div class="book-description">
-                        <h4>Title</h4>
-                        <h5><i>Author</i></h5>
-                        <p>Pages</p>
-                        <p>Pages Total</p>      
+                <div class="book-info">
+                    <div class="book">
+                        <div class="book-description">
+                            <h4>TitleTitleTitleTitleTitleTitleTitleTitle </h4>
+                            <h5><i>AuthorAuthorAuthorAuthorAuthorAuthorAuthorAuthor</i></h5>
+                            <p>Pages</p>
+                            <p>Pages Total</p>      
+                        </div>
+                        <div class="book-remove">
+                            <button type="submit">&times;</button>
+                        </div>
                     </div>
-                    <div class="book-remove">
-                        <button type="submit">&times;</button>
+                    <div class="book">
+                        <div class="book-description">
+                            <h4>Title</h4>
+                            <h5><i>Author</i></h5>
+                            <p>Pages</p>
+                            <p>Pages Total</p>      
+                        </div>
+                        <div class="book-remove">
+                            <button type="submit">&times;</button>
+                        </div>
                     </div>
-                </div>
-                <div class="book">
-                    <div class="book-description">
-                        <h4>Title</h4>
-                        <h5><i>Author</i></h5>
-                        <p>Pages</p>
-                        <p>Pages Total</p>      
-                    </div>
-                    <div class="book-remove">
-                        <button type="submit">&times;</button>
+                    <div class="book">
+                        <div class="book-description">
+                            <h4>Title</h4>
+                            <h5><i>Author</i></h5>
+                            <p>Pages</p>
+                            <p>Pages Total</p>      
+                        </div>
+                        <div class="book-remove">
+                            <button type="submit">&times;</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
+    <div class="footer">
+        <p>Copyright</p>
+    </div>
 </body>
 </html>

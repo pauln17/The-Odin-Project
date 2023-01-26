@@ -227,6 +227,7 @@ form {
 }
 
 .book-remove button:hover {
+    scale: 1.1;
     background: rgb(186, 186, 186);
 }
 

@@ -31,7 +31,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 40px;
+    font-size: 30px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -122,6 +122,7 @@ form {
 }
 
 .input-group label {
+    background: transparent;
     font-size: calc(1.25vw + 1vh);
     font-weight: 1000;
 }
@@ -132,7 +133,7 @@ form {
     background: transparent;
     color: white;
     border: none;
-    border-bottom: 1px dashed;
+    border-bottom: 1px solid;
     width: 100%;
 }
 
@@ -146,6 +147,7 @@ form {
 }
 
 .add-button button {
+    background: white;
     font-family: 'Poppins', sans-serif;
     font-size: calc(1.5vw + 1vh);
     font-weight: 1000;

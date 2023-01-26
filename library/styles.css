@@ -27,13 +27,16 @@ body {
 
 .add-book {
     background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     font-size: 40px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     outline: 0;
-    border: 1px solid rgb(134, 125, 125);
+    border: 2px solid white;
     position: fixed;
     right: 3%;
     bottom: 3%;

@@ -32,6 +32,11 @@ const closePopUp = function() {
     author.value = '';
     pages.value = '';
     pagesRead.value = '';
+    emptyForm = true;
+    titleForm = true;
+    authorForm = true;
+    pagesForm = true;
+    pagesReadForm = true;
     titleErrText.innerHTML = '';
     authorErrText.innerHTML = '';
     pagesErrText.innerHTML = '';
@@ -193,6 +198,7 @@ function validateAllForms() {
     return true;
 }
 
+let removeButtons;
 // Function to create book elements contained within library array and display them
 function createLibrary() {
     myLibrary.forEach((book) => {
@@ -215,8 +221,15 @@ function createLibrary() {
         const bookRemove = document.createElement('div');
         const bookRemoveButton = document.createElement('button');
         bookRemove.classList.add('book-remove');
+        bookRemoveButton.classList.add('remove-button');
         bookRemoveButton.setAttribute('type', 'submit');
         bookRemoveButton.innerHTML = '&times;';
+        
+        // Remove Button Functionality
+        bookRemoveButton.addEventListener('click', (e) => {
+            e.target.parentElement.parentElement.remove();
+        })
+        removeButtons = document.querySelectorAll('.remove-button');
 
         bookDescription.append(titleText, authorText, pagesText, pagesReadText);
         bookRemove.appendChild(bookRemoveButton);

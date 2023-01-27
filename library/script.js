@@ -17,17 +17,30 @@ overlayPopUp.addEventListener('click', () => {
 });
 
 const openPopUp = function() {
+    title.value = '';
+    author.value = '';
+    pages.value = '';
+    pagesRead.value = '';
+
     popUp.setAttribute('id', 'active');
     overlayPopUp.setAttribute('id', 'active');
     openPopUpButton.removeAttribute('id');
 }
 
 const closePopUp = function() {
+    title.value = '';
+    author.value = '';
+    pages.value = '';
+    pagesRead.value = '';
+    titleErrText.innerHTML = '';
+    authorErrText.innerHTML = '';
+    pagesErrText.innerHTML = '';
+    pagesReadErrText.innerHTML = '';
+
     popUp.removeAttribute('id');
     overlayPopUp.removeAttribute('id');
     openPopUpButton.setAttribute('id', 'active');
 }
-
 
 // Obtains user-input and creates a book object from book constructor and then stores it into library array
 let myLibrary = [];
@@ -41,10 +54,10 @@ function Book(title, author, pages, pagesRead) {
 }
 
 function addBookToLibrary() {
-    const title = document.querySelector('#title');
-    const author = document.querySelector('#author');
-    const pages = document.querySelector('#total-pages');
-    const pagesRead = document.querySelector('#pages-read');
+    title = document.querySelector('#title');
+    author = document.querySelector('#author');
+    pages = document.querySelector('#total-pages');
+    pagesRead = document.querySelector('#pages-read');
 
     const newBook = new Book(title.value, author.value, pages.value, pagesRead.value);
     
@@ -54,12 +67,131 @@ function addBookToLibrary() {
     createLibrary();
 }
 
-// Prevents default form submission
+let title = document.querySelector('#title');
+let author = document.querySelector('#author');
+let pages = document.querySelector('#total-pages');
+let pagesRead = document.querySelector('#pages-read');
+const titleErrText = document.querySelector('.title-error');
+const authorErrText = document.querySelector('.author-error');
+const pagesErrText = document.querySelector('.total-pages-error');
+const pagesReadErrText = document.querySelector('.pages-read-error');
+let emptyForm = true;
+let titleForm = true;
+let authorForm = true;
+let pagesForm = true;
+let pagesReadForm = true;
+
+function containsOnlyLetters(str) {
+    return /^[a-zA-Z]+$/.test(str);
+  }
+
+// Form validation
 const form = document.getElementById('book-form');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    addBookToLibrary()
+
+    if (title.value.length === 0) {
+        emptyForm = false;
+        titleErrText.innerHTML = 'Empty Title';
+    }
+
+    if (author.value.length === 0) {
+        emptyForm = false;
+        authorErrText.innerHTML = 'Empty Author';
+    }
+
+    if (pages.value.length === 0) {
+        emptyForm = false;
+        pagesErrText.innerHTML = 'Empty Pages';
+    } 
+
+    if (pagesRead.value.length === 0) {
+        emptyForm = false;
+        pagesReadErrText.innerHTML = 'Empty Pages Read';
+    } 
+
+    if (validateAllForms() === true) {
+        addBookToLibrary();
+        closePopUp();
+    }
 })
+
+title.addEventListener('input', () => {
+    titleForm = true;
+    if (title.value.length >= 25) {
+        titleForm = false;
+        titleErrText.innerHTML = 'Title must be less than 25 characters';
+    } else {
+        titleErrText.innerHTML = '';
+    }
+
+});
+
+author.addEventListener('input', () => {
+    authorForm = true;
+    if (author.value.length >= 25) {
+        authorForm = false;
+        authorErrText.innerHTML = 'Title must be less than 25 characters';
+    } else {
+        authorErrText.innerHTML = '';
+    }
+});
+
+pages.addEventListener('input', () => {
+    pagesForm = true;
+    if (isNaN(pages.value) === true) {
+        pagesForm = false;
+        pagesErrText.innerHTML = 'Must be a numerical value';
+        pagesReadErrText.innerHTML = '';
+        return;
+    } else {
+        pagesErrText.innerHTML = '';
+    }
+
+    if (parseInt(pages.value) < parseInt(pagesRead.value)) {
+        pagesForm = false;
+        pagesErrText.innerHTML = 'Pages read must not be more than total pages';
+        pagesReadErrText.innerHTML = 'Pages read must not be more than total pages';
+    } else {
+        pagesErrText.innerHTML = '';
+        pagesReadErrText.innerHTML = '';
+    }
+});
+
+pagesRead.addEventListener('input', () => {
+    pagesReadForm = true;
+    if (isNaN(pagesRead.value) === true) {
+        pagesReadForm = false;
+        pagesReadErrText.innerHTML = 'Must be a numerical value';
+        return;
+    } else {
+        pagesReadErrText.innerHTML = '';
+    }
+
+    if (parseInt(pages.value) < parseInt(pagesRead.value)) {
+        pagesReadForm = false;
+        pagesErrText.innerHTML = 'Pages read must not be more than total pages';
+        pagesReadErrText.innerHTML = 'Pages read must not be more than total pages';
+    } else {
+        pagesErrText.innerHTML = '';
+        pagesReadErrText.innerHTML = '';
+    }
+});
+
+function validateAllForms() {
+    if (emptyForm === false) {
+        return false;
+    } else if (titleForm === false) {
+        return false;
+    } else if (authorForm === false) {
+        return false;
+    } else if (pagesForm === false) {
+        return false;
+    } else if (pagesReadForm === false) {
+        return false;
+    }
+    return true;
+}
 
 // Function to create book elements contained within library array and display them
 function createLibrary() {

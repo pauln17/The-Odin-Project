@@ -25,6 +25,7 @@ body {
     padding: 10px;
 }
 
+
 .add-book {
     background: black;
     display: flex;
@@ -128,16 +129,20 @@ form {
 }
 
 .input-group input {
-    font-size: calc(0.65vw + 1vh);;
+    font-size: calc(0.5vw + 1vh);
     outline: 0;
     background: transparent;
     color: white;
     border: 0;
-    padding-left: 5px;
     padding-top: 5px;
     border-bottom: 1px dashed;
     width: 100%;
     border-radius: 0;
+}
+
+.errText {
+    color: white;
+    font-size: calc(0.35vw + 1vh);
 }
 
 .add-button {

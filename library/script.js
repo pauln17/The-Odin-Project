@@ -94,6 +94,7 @@ function containsOnlyLetters(str) {
 const form = document.getElementById('book-form');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    emptyForm = true;
 
     if (title.value.length === 0) {
         emptyForm = false;
@@ -119,6 +120,7 @@ form.addEventListener('submit', (e) => {
         addBookToLibrary();
         closePopUp();
     }
+    console.log(emptyForm, titleForm, authorForm, pagesForm, pagesReadForm)
 })
 
 title.addEventListener('input', () => {
@@ -198,6 +200,8 @@ function validateAllForms() {
     return true;
 }
 
+// Edit pages read function
+
 let removeButtons;
 // Function to create book elements contained within library array and display them
 function createLibrary() {
@@ -219,20 +223,59 @@ function createLibrary() {
         pagesReadText.textContent = `Pages Read: ${book.pagesRead}`;
 
         const bookRemove = document.createElement('div');
+        const buttonDiv = document.createElement('div');
         const bookRemoveButton = document.createElement('button');
+        const bookUpdateButton = document.createElement('button');
+        const bookForm = document.createElement('form');
+        const updatePagesLabel = document.createElement('label');
+        const updatePagesInput = document.createElement('input');
+
+
+        bookUpdateButton.classList.add('update-button');
+        bookUpdateButton.setAttribute('form', 'update-pages-form');
+        bookUpdateButton.innerHTML = 'Confirm'
+        bookForm.classList.add('update-pages-form');
+        updatePagesLabel.setAttribute('for', 'update-pages-read');
+        updatePagesLabel.innerHTML = 'Update Pages Read';
+        updatePagesInput.setAttribute('id', 'update-pages-read');
         bookRemove.classList.add('book-remove');
         bookRemoveButton.classList.add('remove-button');
         bookRemoveButton.setAttribute('type', 'submit');
         bookRemoveButton.innerHTML = '&times;';
         
+
+        // Update pages functionality
+        bookUpdateButton.addEventListener('click', () => {
+            const updatedValue = updatePagesInput.value;
+
+            if (updatedValue === '') {
+                return;
+            } 
+            if (updatedValue < 0) {
+                return;
+            }
+            if (updatedValue > book.pages) {
+                return;
+            }
+            if (isNaN(updatedValue) === true) {
+                return;
+            }
+
+            book.pagesRead = updatedValue;
+            pagesReadText.textContent = `Pages Read: ${book.pagesRead}`;
+
+        });
+
         // Remove Button Functionality
         bookRemoveButton.addEventListener('click', (e) => {
-            e.target.parentElement.parentElement.remove();
+            e.target.parentElement.parentElement.parentElement.remove();
         })
         removeButtons = document.querySelectorAll('.remove-button');
 
+        bookForm.append(updatePagesLabel, updatePagesInput);
+        buttonDiv.append(bookRemoveButton, bookUpdateButton);
         bookDescription.append(titleText, authorText, pagesText, pagesReadText);
-        bookRemove.appendChild(bookRemoveButton);
+        bookRemove.append(bookForm, buttonDiv);
         bookCard.append(bookDescription, bookRemove);
         libraryDisplay.appendChild(bookCard);
     });

@@ -230,7 +230,43 @@ form {
     font-size: calc(0.45vw + 1vh);
 }
 
-.book-remove button {
+.update-pages-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-remove {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-remove div {
+    display: flex;
+}
+
+.update-button {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    color: black;
+    font-size: calc(0.5vw + 0.5vh);
+    width: calc(3vw + 1vh);
+    height: calc(1vw + 3.5vh);
+    cursor: pointer;
+    border: 2px solid black;
+    outline: 0;
+    border-radius: 5px;
+    word-break: break-all;
+    transition: 0.2s ease-in-out;
+}
+
+.remove-button {
     padding: 5px;
     display: flex;
     justify-content: center;
@@ -238,7 +274,7 @@ form {
     background: rgb(255, 255, 255);
     color: black;
     font-size: calc(1.75vw + 1vh);
-    width: calc(6vw + 1vh);
+    width: calc(3vw + 1vh);
     height: calc(1vw + 3.5vh);
     cursor: pointer;
     border: 2px solid black;
@@ -247,9 +283,24 @@ form {
     transition: 0.2s ease-in-out;
 }
 
-.book-remove button:hover {
+.remove-button:hover, .update-button:hover {
     scale: 1.1;
     background: rgb(186, 186, 186);
+}
+
+.book-remove label {
+    font-size: calc(0.15vw + 1vh);
+}
+
+.book-remove input {
+    background: white;
+    color: black;
+    border: none;
+    outline: 0;
+    margin-bottom: 5px;
+    width: calc(3vw + 1vh);
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .footer {

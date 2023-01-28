@@ -17,10 +17,20 @@ overlayPopUp.addEventListener('click', () => {
 });
 
 const openPopUp = function() {
+    // Resetting Variables When Add Form Opens
     title.value = '';
     author.value = '';
     pages.value = '';
     pagesRead.value = '';
+    emptyForm = true;
+    titleForm = true;
+    authorForm = true;
+    pagesForm = true;
+    pagesReadForm = true;
+    titleErrText.innerHTML = '';
+    authorErrText.innerHTML = '';
+    pagesErrText.innerHTML = '';
+    pagesReadErrText.innerHTML = '';
 
     popUp.setAttribute('id', 'active');
     overlayPopUp.setAttribute('id', 'active');
@@ -28,6 +38,7 @@ const openPopUp = function() {
 }
 
 const closePopUp = function() {
+    // Resetting Variables When Add Form Closes
     title.value = '';
     author.value = '';
     pages.value = '';
@@ -47,10 +58,11 @@ const closePopUp = function() {
     openPopUpButton.setAttribute('id', 'active');
 }
 
-// Obtains user-input and creates a book object from book constructor and then stores it into library array
-let myLibrary = [];
-let permanentLibrary = [];
 
+// Library Array
+let myLibrary = [];
+
+// Book Constructor -- Book Name, Author of Book, Total Pages, Amount of Pages Read
 function Book(title, author, pages, pagesRead) {
     this.title = title;
     this.author = author;
@@ -58,20 +70,22 @@ function Book(title, author, pages, pagesRead) {
     this.pagesRead = pagesRead;
 }
 
-function addBookToLibrary() {
+// Create Book Object from User Input
+function createBook() {
     title = document.querySelector('#title');
     author = document.querySelector('#author');
     pages = document.querySelector('#total-pages');
     pagesRead = document.querySelector('#pages-read');
 
     const newBook = new Book(title.value, author.value, pages.value, pagesRead.value);
-    
-    permanentLibrary.push(newBook);
     myLibrary = [];
     myLibrary.push(newBook);
+
     createLibrary();
 }
 
+
+// Form Validation
 let title = document.querySelector('#title');
 let author = document.querySelector('#author');
 let pages = document.querySelector('#total-pages');
@@ -86,43 +100,57 @@ let authorForm = true;
 let pagesForm = true;
 let pagesReadForm = true;
 
-function containsOnlyLetters(str) {
-    return /^[a-zA-Z]+$/.test(str);
-  }
-
-// Form validation
 const form = document.getElementById('book-form');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    emptyForm = true;
 
-    if (title.value.length === 0) {
-        emptyForm = false;
-        titleErrText.innerHTML = 'Empty Title';
+    function validateAllForms() {
+        if (emptyForm === false) {
+            return false;
+        } else if (titleForm === false) {
+            return false;
+        } else if (authorForm === false) {
+            return false;
+        } else if (pagesForm === false) {
+            return false;
+        } else if (pagesReadForm === false) {
+            return false;
+        }
+        return true;
     }
 
-    if (author.value.length === 0) {
-        emptyForm = false;
-        authorErrText.innerHTML = 'Empty Author';
+    function checkEmptyInput() {
+        emptyForm = true;
+        if (title.value.length === 0) {
+            emptyForm = false;
+            titleErrText.innerHTML = 'Empty Title';
+        }
+    
+        if (author.value.length === 0) {
+            emptyForm = false;
+            authorErrText.innerHTML = 'Empty Author';
+        }
+    
+        if (pages.value.length === 0) {
+            emptyForm = false;
+            pagesErrText.innerHTML = 'Empty Pages';
+        } 
+    
+        if (pagesRead.value.length === 0) {
+            emptyForm = false;
+            pagesReadErrText.innerHTML = 'Empty Pages Read';
+        } 
     }
 
-    if (pages.value.length === 0) {
-        emptyForm = false;
-        pagesErrText.innerHTML = 'Empty Pages';
-    } 
-
-    if (pagesRead.value.length === 0) {
-        emptyForm = false;
-        pagesReadErrText.innerHTML = 'Empty Pages Read';
-    } 
+    checkEmptyInput();
 
     if (validateAllForms() === true) {
-        addBookToLibrary();
+        createBook();
         closePopUp();
     }
-    console.log(emptyForm, titleForm, authorForm, pagesForm, pagesReadForm)
 })
 
+// Validate Title Input
 title.addEventListener('input', () => {
     titleForm = true;
     if (title.value.length >= 25) {
@@ -134,6 +162,7 @@ title.addEventListener('input', () => {
 
 });
 
+// Validate Author Input
 author.addEventListener('input', () => {
     authorForm = true;
     if (author.value.length >= 25) {
@@ -144,6 +173,7 @@ author.addEventListener('input', () => {
     }
 });
 
+// Validate Pages Input
 pages.addEventListener('input', () => {
     pagesForm = true;
     if (isNaN(pages.value) === true) {
@@ -155,8 +185,10 @@ pages.addEventListener('input', () => {
         pagesErrText.innerHTML = '';
     }
 
+    pagesReadForm = true;
     if (parseInt(pages.value) < parseInt(pagesRead.value)) {
         pagesForm = false;
+        pagesReadForm = false;
         pagesErrText.innerHTML = 'Pages read must not be more than total pages';
         pagesReadErrText.innerHTML = 'Pages read must not be more than total pages';
     } else {
@@ -165,6 +197,7 @@ pages.addEventListener('input', () => {
     }
 });
 
+// Validate Pages Read Input
 pagesRead.addEventListener('input', () => {
     pagesReadForm = true;
     if (isNaN(pagesRead.value) === true) {
@@ -175,8 +208,10 @@ pagesRead.addEventListener('input', () => {
         pagesReadErrText.innerHTML = '';
     }
 
+    pagesForm = true;
     if (parseInt(pages.value) < parseInt(pagesRead.value)) {
         pagesReadForm = false;
+        pagesForm = false;
         pagesErrText.innerHTML = 'Pages read must not be more than total pages';
         pagesReadErrText.innerHTML = 'Pages read must not be more than total pages';
     } else {
@@ -185,93 +220,84 @@ pagesRead.addEventListener('input', () => {
     }
 });
 
-function validateAllForms() {
-    if (emptyForm === false) {
-        return false;
-    } else if (titleForm === false) {
-        return false;
-    } else if (authorForm === false) {
-        return false;
-    } else if (pagesForm === false) {
-        return false;
-    } else if (pagesReadForm === false) {
-        return false;
-    }
-    return true;
-}
 
-// Edit pages read function
-
-let removeButtons;
 // Function to create book elements contained within library array and display them
 function createLibrary() {
     myLibrary.forEach((book) => {
+        // Select Library Display Container to Enable Appending
         const libraryDisplay = document.querySelector('.book-info');
 
+        // Create Book
         const bookCard = document.createElement('div');
         bookCard.classList.add('book');
         const bookDescription = document.createElement('div');
         bookDescription.classList.add('book-description');
 
+        // Creating Book Elements
         const titleText = document.createElement('h4');
         const authorText = document.createElement('h5');
         const pagesText = document.createElement('p');
         const pagesReadText = document.createElement('p');
+        // Setting Book Element Contents to Content of Book
         titleText.textContent = `${book.title}`;
         authorText.textContent = `By: ${book.author}`;
         pagesText.textContent = `Total Pages: ${book.pages}`;
         pagesReadText.textContent = `Pages Read: ${book.pagesRead}`;
 
-        const bookRemove = document.createElement('div');
+        // Dividers For Buttons
         const buttonDiv = document.createElement('div');
-        const bookRemoveButton = document.createElement('button');
-        const bookUpdateButton = document.createElement('button');
-        const bookForm = document.createElement('form');
-        const updatePagesLabel = document.createElement('label');
-        const updatePagesInput = document.createElement('input');
-
-
-        bookUpdateButton.classList.add('update-button');
-        bookUpdateButton.setAttribute('form', 'update-pages-form');
-        bookUpdateButton.innerHTML = 'Confirm'
-        bookForm.classList.add('update-pages-form');
-        updatePagesLabel.setAttribute('for', 'update-pages-read');
-        updatePagesLabel.innerHTML = 'Update Pages Read';
-        updatePagesInput.setAttribute('id', 'update-pages-read');
+        const bookRemove = document.createElement('div');
         bookRemove.classList.add('book-remove');
+        
+        // Remove Book Button
+        const bookRemoveButton = document.createElement('button');
         bookRemoveButton.classList.add('remove-button');
         bookRemoveButton.setAttribute('type', 'submit');
         bookRemoveButton.innerHTML = '&times;';
         
+        // Edit Pages Read Form
+        const bookForm = document.createElement('form');
+        bookForm.classList.add('update-pages-form');
+        const updatePagesLabel = document.createElement('label');
+        updatePagesLabel.setAttribute('for', 'update-pages-read');
+        updatePagesLabel.innerHTML = 'Update Pages Read';
+        const updatePagesInput = document.createElement('input');
+        updatePagesInput.setAttribute('id', 'update-pages-read');
+        // Confirm Edit Button
+        const bookUpdateButton = document.createElement('button');
+        bookUpdateButton.classList.add('update-button');
+        bookUpdateButton.setAttribute('form', 'update-pages-form');
+        bookUpdateButton.innerHTML = 'Confirm';
 
-        // Update pages functionality
+    
+        // Remove Button Functionality
+        bookRemoveButton.addEventListener('click', (e) => {
+            e.target.parentElement.parentElement.parentElement.remove();
+        })
+
+        // Edit Pages Functionality
         bookUpdateButton.addEventListener('click', () => {
             const updatedValue = updatePagesInput.value;
 
             if (updatedValue === '') {
+                console.log('true1');
                 return;
-            } 
-            if (updatedValue < 0) {
+            } else if (isNaN(updatedValue) === true) {
+                console.log('true4');
                 return;
-            }
-            if (updatedValue > book.pages) {
+            } else if (parseInt(updatedValue) < 0) {
+                console.log('true2');
                 return;
-            }
-            if (isNaN(updatedValue) === true) {
+            } else if (parseInt(updatedValue) > book.pages) {
+                console.log('true3');
                 return;
             }
 
             book.pagesRead = updatedValue;
             pagesReadText.textContent = `Pages Read: ${book.pagesRead}`;
-
         });
 
-        // Remove Button Functionality
-        bookRemoveButton.addEventListener('click', (e) => {
-            e.target.parentElement.parentElement.parentElement.remove();
-        })
-        removeButtons = document.querySelectorAll('.remove-button');
-
+        // Append HTML Elements Together
         bookForm.append(updatePagesLabel, updatePagesInput);
         buttonDiv.append(bookRemoveButton, bookUpdateButton);
         bookDescription.append(titleText, authorText, pagesText, pagesReadText);

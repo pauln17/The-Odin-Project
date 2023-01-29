@@ -12,7 +12,7 @@
 }
 
 body {
-    background:rgb(0, 0, 0);
+    background: linear-gradient(black, rgb(109, 109, 109), black);
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
@@ -35,7 +35,7 @@ body {
     width: 75vw;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 15px;
-    box-shadow: 5px 5px 25px 25px rgba(216, 216, 216, 0.2);
+    box-shadow: 5px 5px 25px 25px rgba(0, 0, 0, 0.5);
 }
 
 .board {
@@ -76,7 +76,7 @@ body {
 .board.x .cell:not(.x):not(.o):hover::before,
 .board.x .cell:not(.x):not(.o):hover::after,
 .board.o .cell:not(.x):not(.o):hover::before {
-    background-color: rgba(180, 180, 180);
+    background-color: rgb(99, 99, 99);
 }
 
 .cell.x::before,
@@ -118,6 +118,68 @@ body {
     width: calc(var(--mark-size) * .7);
     height: calc(var(--mark-size) * .7);
     background: var(--cell-color);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.modal h1 {
+    font-size: 50px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+button {
+    background: rgb(228, 228, 228);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 75px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+button:hover {
+    background: rgb(134, 134, 134);
+}
+
+.modal#active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay {
+    background: rgba(0, 0, 0);
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay#active {
+    opacity: 1;
+    pointer-events: all;
 }
 
 @media (max-width:500px) {

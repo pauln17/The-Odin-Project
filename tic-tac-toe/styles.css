@@ -5,6 +5,12 @@
     padding: 0;
 }
 
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+    --cell-color: rgb(228, 228, 228);
+}
+
 body {
     background:rgb(0, 0, 0);
     font-family: 'Poppins', sans-serif;
@@ -49,21 +55,73 @@ body {
 }
 
 .cell {
-    background: rgb(228, 228, 228);
+    background: var(--cell-color);
     outline: 0;
-    width: 100px;
-    height: 100px;
+    width: var(--cell-size);
+    height: var(--cell-size);
     cursor: pointer;
     transition: background 0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.cell:hover {
-    background: rgb(75, 75, 75);
+.cell.x::before,
+.cell.x::after,
+.cell.o::before {
+    background-color: black;
+}
+
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::before {
+    background-color: rgba(180, 180, 180);
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .10);
+    height: var(--mark-size);
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+}
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+}
+
+.cell.o::before,
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.cell.o::before,
+.board.o .cell:not(.x):not(.o):hover::before {
+    width: calc(var(--mark-size) * .9);
+    height: calc(var(--mark-size) * .9);
+}
+
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background: var(--cell-color);
 }
 
 @media (max-width:500px) {
-    .cell {
-        width: 50px;
-        height: 50px;
+    :root {
+        --cell-size: 50px;
     }
 }

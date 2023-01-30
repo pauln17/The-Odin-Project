@@ -2,10 +2,6 @@
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 
-// Game Modes
-const PLAYERVSPLAYER = 0;
-const PLAYERVSAI = 1;
-
 // Board 
 const board = document.querySelector('.board');
 
@@ -32,21 +28,16 @@ const WINNING_COMBINATIONS = [
 const gameStart = (() => {
     const gameIntroduction = () => {
         const twoPlayerButton = document.querySelector('[data-two-player]');
-        const aiButton = document.querySelector('[data-ai]');
-        twoPlayerButton.addEventListener('click', () => setGameMode(PLAYERVSPLAYER));
-        aiButton.addEventListener('click', () => setGameMode(PLAYERVSAI));
+        twoPlayerButton.addEventListener('click', () => setGameMode());
+
     }
 
-    const setGameMode = (mode) => {
-        if (mode === PLAYERVSPLAYER) {
+    const setGameMode = () => {
             renderGame();
             cells.forEach((cell) => {
-                cell.addEventListener('click', gameBoard.playGameVsPlayer, { once : true })
+                cell.addEventListener('click', gameBoard.playGame, { once : true })
             });
             gameBoard.setBoardHoverClass();
-        } else {
-            renderGame();
-        }
     }
 
     const renderGame = () => {
@@ -63,7 +54,7 @@ const gameStart = (() => {
 
 
 const gameBoard = (() => {
-    const playGameVsPlayer = (e) => {
+    const playGame = (e) => {
         const cell = e.target;
         const currentClass = xTurn ? X_CLASS : O_CLASS;
         placeMark(cell, currentClass);
@@ -134,7 +125,7 @@ const gameBoard = (() => {
     }
 
     return {
-        playGameVsPlayer,
+        playGame,
         placeMark,
         swapTurn,
         setBoardHoverClass,

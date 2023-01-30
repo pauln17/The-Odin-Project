@@ -29,100 +29,120 @@ const WINNING_COMBINATIONS = [
     [2, 4, 6]
 ]
 
+const gameStart = (() => {
+    const gameIntroduction = () => {
+        const twoPlayerButton = document.querySelector('[data-two-player]');
+        const aiButton = document.querySelector('[data-ai]');
+        twoPlayerButton.addEventListener('click', () => setGameMode(PLAYERVSPLAYER));
+        aiButton.addEventListener('click', () => setGameMode(PLAYERVSAI));
+    }
 
-
-function newGame() {
-    const twoPlayerButton = document.querySelector('[data-two-player]');
-    const aiButton = document.querySelector('[data-ai]');
-    twoPlayerButton.addEventListener('click', () => setGameMode(PLAYERVSPLAYER));
-    aiButton.addEventListener('click', () => setGameMode(PLAYERVSAI));
-
-    function setGameMode(mode) {
+    const setGameMode = (mode) => {
         if (mode === PLAYERVSPLAYER) {
             renderGame();
             cells.forEach((cell) => {
-                cell.addEventListener('click', playGameVsPlayer, { once : true })
+                cell.addEventListener('click', gameBoard.playGameVsPlayer, { once : true })
             });
-            setBoardHoverClass();
+            gameBoard.setBoardHoverClass();
         } else {
             renderGame();
         }
     }
-    
-    function renderGame() {
+
+    const renderGame = () => {
         modal.removeAttribute('id');
         overlay.removeAttribute('id');
     }
-}
 
-function playGameVsPlayer(e) {
-    const cell = e.target;
-    const currentClass = xTurn ? X_CLASS : O_CLASS;
-    placeMark(cell, currentClass);
-    if (checkWin(currentClass)) {
-        endGame(currentClass);
-    } else if (checkDraw()) {
-        endGame('draw');
-    } else {
-        swapTurn();
-        setBoardHoverClass();
+    return {
+        gameIntroduction,
+        setGameMode,
+        renderGame
+    }
+})();
+
+
+const gameBoard = (() => {
+    const playGameVsPlayer = (e) => {
+        const cell = e.target;
+        const currentClass = xTurn ? X_CLASS : O_CLASS;
+        placeMark(cell, currentClass);
+        if (checkWin(currentClass)) {
+            endGame(currentClass);
+        } else if (checkDraw()) {
+            endGame('draw');
+        } else {
+            swapTurn();
+            setBoardHoverClass();
+        }
     }
 
-}
-
-function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass)
-}
-
-function swapTurn() {
-    xTurn = !xTurn;
-}
-
-function setBoardHoverClass() {
-    board.classList.remove(X_CLASS);
-    board.classList.remove(O_CLASS);
-
-    if (xTurn) {
-        board.classList.add(X_CLASS)
-    } else {
-        board.classList.add(O_CLASS)
+    const placeMark = (cell, currentClass) => {
+        cell.classList.add(currentClass);
     }
-}
 
-function checkWin(currentClass) {
-    return WINNING_COMBINATIONS.some(combination => {
-        return combination.every(index => {
-            return cells[index].classList.contains(currentClass)
+    const swapTurn = () => {
+        xTurn = !xTurn;
+    }
+
+    const setBoardHoverClass = () => {
+        board.classList.remove(X_CLASS);
+        board.classList.remove(O_CLASS);
+    
+        if (xTurn) {
+            board.classList.add(X_CLASS)
+        } else {
+            board.classList.add(O_CLASS)
+        }
+    }
+
+    const checkWin = (currentClassWinner) => {
+        return WINNING_COMBINATIONS.some(combination => {
+            return combination.every(index => {
+                return cells[index].classList.contains(currentClassWinner)
+            })
+        });
+    }
+
+    const checkDraw = () => {
+        return [...cells].every((cell) => {
+            return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS)
         })
-    });
-}
-
-function checkDraw() {
-    return [...cells].every((cell) => {
-        return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS)
-    })
-}
-
-function endGame(currentClass) {
-    const gameText = document.querySelector('.game-text');
-    if (currentClass === 'x') {
-        gameText.innerHTML = 'Player1 WON';
-    } else if (currentClass === 'o') {
-        gameText.innerHTML = 'Player2 WON';
-    } else {
-        gameText.innerHTML = 'DRAW';
     }
-    modal.setAttribute('id', 'active');
-    overlay.setAttribute('id', 'active');
+    
+    const endGame = (currentClassWinner) => {
+        const gameText = document.querySelector('.game-text');
+        if (currentClassWinner === 'x') {
+            gameText.innerHTML = 'Player1 WON';
+        } else if (currentClassWinner === 'o') {
+            gameText.innerHTML = 'Player2 WON';
+        } else {
+            gameText.innerHTML = 'DRAW';
+        }
+        modal.setAttribute('id', 'active');
+        overlay.setAttribute('id', 'active');
+    
+        clearBoard();
+    }
+    
+    const clearBoard = () => {
+        cells.forEach((cell) => {
+            cell.classList.remove(X_CLASS);
+            cell.classList.remove(O_CLASS);
+        })
+        xTurn = X_CLASS;
+    }
 
-    clearBoard();
-}
+    return {
+        playGameVsPlayer,
+        placeMark,
+        swapTurn,
+        setBoardHoverClass,
+        checkWin,
+        checkDraw,
+        endGame,
+        clearBoard
+    }
+})();
 
-function clearBoard() {
-    cells.forEach((cell) => {
-        cell.classList.remove(X_CLASS);
-        cell.classList.remove(O_CLASS);
-    })
-    xTurn = X_CLASS;
-}
-newGame();
+gameStart.gameIntroduction();

@@ -1,1 +1,8 @@
-console.log("works");
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+
+/******/ })()
+;

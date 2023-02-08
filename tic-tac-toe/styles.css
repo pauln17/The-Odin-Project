@@ -142,6 +142,7 @@ body {
 }
 
 button {
+    color: black;
     font-size: 21px;
     background: rgb(228, 228, 228);
     display: flex;

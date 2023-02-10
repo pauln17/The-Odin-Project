@@ -1,3 +1,7 @@
-import { createHome } from './home';
+import createHome from './modules/home';
 
-createHome();
+function init() {
+    createHome();
+}
+
+init();

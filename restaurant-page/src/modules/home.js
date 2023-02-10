@@ -1,4 +1,4 @@
-function createHome() {
+export default function createHome() {
     // Selecting Skeleton HTML 'Div'
     content = document.querySelector('#content');
 
@@ -67,5 +67,3 @@ function createInformation() {
     
     return sectionOne
 }
-
-export default createHome;

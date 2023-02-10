@@ -66,9 +66,11 @@ body {
     font-family: 'Oswald', sans-serif;
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .navTabs li:hover {
+    text-decoration: underline;
     translate: 0 5%;
 }
 

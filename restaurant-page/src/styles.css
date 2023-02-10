@@ -74,7 +74,7 @@ body {
 }
 
 .sectionOne {
-    background: url('../dist/images/steak.jpg');
+    background: url('./images/steak.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -93,7 +93,7 @@ body {
     background: black;
     opacity: 0.4;
     border-radius: 10px;
-    word-break: break-all;
+    word-break: keep-all;
 }
 
 @media (max-width: 300px) {
@@ -108,5 +108,4 @@ body {
         align-items: center;
         gap: 0;
     }
-    
 }

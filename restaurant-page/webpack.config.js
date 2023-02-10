@@ -1,8 +1,9 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   devtool: 'inline-source-map',
   entry: {
     index: './src/index.js',
@@ -13,9 +14,25 @@ module.exports = {
     clean: true,
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       title: 'Restaurant Page',
       template: './src/template.html'
     }),
   ],
+  module: {
+    rules: [
+      {
+        test:/\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+    ],
+  },
 };

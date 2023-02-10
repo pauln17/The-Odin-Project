@@ -6,7 +6,7 @@ export default function createHome() {
     content.append(createInformation());
 }
 
-function createNavBar() {
+export function createNavBar() {
     // NavBar Elements
     const navBar = document.createElement('div');
     navBar.classList.add('navBar');
@@ -44,7 +44,7 @@ function createNavBar() {
     return navBar
 }
 
-function createInformation() {
+export function createInformation() {
     // Create Section for Information
     const sectionOne = document.createElement('div');
     sectionOne.classList.add('sectionOne');

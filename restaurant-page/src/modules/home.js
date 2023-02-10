@@ -1,6 +1,6 @@
 export default function createHome() {
     // Selecting Skeleton HTML 'Div'
-    content = document.querySelector('#content');
+    const content = document.querySelector('#content');
 
     content.append(createNavBar());
     content.append(createInformation());

@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap);
 
 * {
-    margin: 0;
-    padding: 0;
+      margin: 0;
+      padding: 0;
 }
-
+  
 body {
     width: 100vw;
     height: 100vh;
@@ -53,6 +53,7 @@ body {
     align-items: center;
     gap: 15%;
     width: 25%;
+    margin-right: 25px;
 }
 
 .navTabs li {
@@ -74,7 +75,7 @@ body {
 }
 
 .sectionOne {
-    background: url('./images/steak.jpg');
+    background: url(images/steak.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -84,7 +85,8 @@ body {
 .information {
     position: fixed;
     margin-top: 50px;
-    height: fit-content;
+    height: 50%;
+    width: 50%;
     top: 50%;
     left: 50%;
     bottom: 0;
@@ -102,8 +104,8 @@ body {
 }
 
 .information p {
-    color: white;
-    font-size: calc(0.5vw + 1vh);
+    color:white;
+    font-size: calc(1vw + 1vh);
     font-family: 'Oswald', sans-serif;
     text-align: center;
 }
@@ -119,9 +121,11 @@ body {
         justify-content: center;
         align-items: center;
         gap: 0;
+        margin-right: 0;
     }
     .information p {
         color: white;
-        font-size: calc(0.75vw + 0.75vh);
+        font-size: calc(0.75vw + 0.9vh);
     }
 }
+  

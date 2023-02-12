@@ -2,6 +2,7 @@ import createHomeInfo from './modules/home';
 import createMenuInfo from './modules/menu';
 import './styles.css';
 import steak from './images/steak.jpg';
+import steakItem from './images/steak-item.jpg';
 
 function createNavBar() {
     // NavBar Elements
@@ -48,7 +49,7 @@ function initializeWebsite() {
     const content = document.querySelector('#content');
     
     content.append(createNavBar());
-    // content.append(createHomeInfo());
+    content.append(createHomeInfo());
 
     const homeTab = document.querySelector('.home');
     const menuTab = document.querySelector('.menu');

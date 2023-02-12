@@ -15,10 +15,12 @@ module.exports = {
     clean: true,
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }),
     new HtmlWebpackPlugin({
       title: 'Restaurant Page',
-      template: './src/template.html'
+      template: './src/template.html',
     }),
   ],
   module: {

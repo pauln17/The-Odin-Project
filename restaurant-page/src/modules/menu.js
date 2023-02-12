@@ -5,14 +5,12 @@ export default function createMenuInfo() {
     const sectionOne = document.createElement('div');
     sectionOne.classList.add('sectionOne');
 
-    const information = document.createElement('div');
-    information.classList.add('information');
+    const menu = document.createElement('div');
+    menu.classList.add('menu-info');
 
-    // Create Information
-    const p = createParagraph('MENU!!!!');
-
-    information.append(p);
-    sectionOne.append(information);
+    sectionOne.append(menu);
     
     return sectionOne
 }
+
+

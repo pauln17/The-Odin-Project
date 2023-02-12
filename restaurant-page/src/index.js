@@ -48,7 +48,7 @@ function initializeWebsite() {
     const content = document.querySelector('#content');
     
     content.append(createNavBar());
-    content.append(createHomeInfo());
+    // content.append(createHomeInfo());
 
     const homeTab = document.querySelector('.home');
     const menuTab = document.querySelector('.menu');

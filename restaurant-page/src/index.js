@@ -1,5 +1,6 @@
 import createHomeInfo from './modules/home';
 import createMenuInfo from './modules/menu';
+import createContactInfo from './modules/contact';
 import './styles.css';
 import steak from './images/steak.jpg';
 import steakItem from './images/steak-item.jpg';
@@ -63,6 +64,11 @@ function initializeWebsite() {
     menuTab.addEventListener('click', () => {
         content.removeChild(content.children[1]);
         content.append(createMenuInfo());
+    })
+
+    contactTab.addEventListener('click', () => {
+        content.removeChild(content.children[1]);
+        content.append(createContactInfo());
     })
 }
 

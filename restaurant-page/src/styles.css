@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap);
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -29,22 +29,22 @@ body {
 }
 
 .navContainer {
-  width: 100%;
-  height: 100%;
-  color: white;
-  font-family: 'Oswald', sans-serif;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  margin: 2.5%;
+  width: 100%;  
+  height: 100%; 
+  color: white; 
+  font-family: 'Oswald', sans-serif;  
+  display: flex;  
+  flex-direction: row;  
+  justify-content: space-between; 
+  align-items: center;  
+  text-align: center; 
+  margin: 2.5%; 
 }
 
 .navContainer h1 {
-  font-family: 'Oswald', sans-serif;
-  color: white;
-  font-size: calc(2vw + 1vh);
+  font-family: 'Oswald', sans-serif;  
+  color: white; 
+  font-size: calc(2vw + 1vh); 
 }
 .navTabs {
   list-style: none;
@@ -150,7 +150,6 @@ img {
   font-size: calc(1vw + 1vh);
   word-break: keep-all;
   width: 100%;
-
 }
 
 .item-info p {
@@ -159,32 +158,68 @@ img {
   width: 100%;
 }
 
+.contact-info {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  margin-top: 50px;
+  height: fit-content;
+  min-height: 50%;
+  width: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 25px;
+  word-break: keep-all;
+  align-items: center;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  gap: 25px;
+}
+
+.contact-info-container h3 {
+  font-size: calc(1.25vw + 1vh);
+}
+
+.contact-info-container p {
+  font-size: calc(0.75vw + 1vh);
+}
+
 @media (max-width: 300px) {
-  .navContainer {
-      flex-direction: column;
-      justify-content: start;
-      align-items: center;
-  }
+.navContainer {
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
 
-  .navTabs {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      margin-right: 0;
-  }
+.navTabs {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin-right: 0;
+}
 
-  .information p {
-      color: white;
-      font-size: calc(0.75vw + 0.9vh);
-  }
+.information p {
+  color: white;
+  font-size: calc(0.75vw + 0.9vh);
+}
 
-  img {
-      width: 75px;
-      height: 75px;
-      outline: 0;
-      border: 0;
-      border-radius: 50%;
-  }
+img {
+  width: 75px;
+  height: 75px;
+  outline: 0;
+  border: 0;
+  border-radius: 50%;
+}
 
 }
+
